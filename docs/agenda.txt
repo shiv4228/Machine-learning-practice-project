@@ -1,0 +1,71 @@
+End to End machine learning projects
+
+setup project with Githhub
+1. Data Ingestion
+2. Data Transformation
+3. Model trainer
+4. Model Evaluation
+5. Model Deployment 
+
+Agenda
+1 - set up the github {Repository}
+    a) new environment
+    b) setup.py
+    c) requirements.txt
+
+steps to start first
+1> create github repository by just giving name it only.
+2> create a new folder and copy its adress to open it in 
+either Anaconda Prompt and Visual Code.
+
+just open Anaconda Prompt --> for change direcotory use {cd "folder adress"} --> Enter
+
+3> write " code . " --> this code dot basically launch the VS instance. 
+in Visual studio code , we actually going to connect with our github repository.
+
+4> after opening the VS code, open new terminal first.
+ 
+now first setp is to create a Environment. I'm not going to create seperate environment, but actually I'm going to use ML Floder to create environment in it.
+what ever packages I'm going to install will come in this folder.
+
+To create environment, I'm basically running a code in terminal
+" conda create -p venv pyhton==3.8 -y"
+
+venv : name for our environment
+python==3.8 : we will use this python version for our entire projcet.
+-y : we use it just because will installation of pacakage, it will not ask for approval again. ( By default we are giving "yes" for all the approval it will ask.
+
+5> To  activate our environment just write " conda activate venv/ ", now, after this, whatever you will do will be add into your environment folder.
+6> Now to connect with our github repository, just follow the comnmands on your repository to connect your  environment in VS Code
+steps to follow:
+________________________
+a) git init
+b) git add README.md
+c) git commit -m "first commit"
+d) git branch -M main
+e) git remote add origin https://github.com/shiv4228/Machine-learning-practice-project.git
+f) git push -u origin main 
+
+to get status of git repository, use " git status"
+
+After sink with our git repository, use it to check " git remote -v"
+
+Befor going to the 7th point; you have to configure your environment with
+you user name and use email id, 
+to do this use following commands.
+for username " git config user.name " shiv455646"
+for user email id : git config user.email singhshivansh5194@gmail.com
+
+after this to check it use
+" git config user.name"
+"git config user.email"
+
+after pushing to the main command: it will ask you to config you git credientials, and to connect with git you have to allow all the requirements it will ask.
+
+7> afterwards, create a " .gitignore" file with congfig of Pyhton language. now save it as in the option given in bottom " Create .gitignore"
+8> now with this much of steps, you have to update your enviroment folder too, with this gitignore file, to do this 
+use it : " git pull "
+
+9> In Vs only, create two new folders 
+a) setup.py
+b) requirements.txt  : --> in this folder all your packages will be stored.
