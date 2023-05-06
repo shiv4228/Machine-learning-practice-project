@@ -67,5 +67,111 @@ after pushing to the main command: it will ask you to config you git crediential
 use it : " git pull "
 
 9> In Vs only, create two new folders 
-a) setup.py
+a) setup.py : it will help to create my machine learning model as a package. and that can be install in your projects and use it. we can also use to deploy our package in PyPi
 b) requirements.txt  : --> in this folder all your packages will be stored.
+
+
+
+10> now in setup file, use this code:
+
+from setuptools import find_packages,setup
+setup(
+name= 'mlproject',
+version='0.0.1',
+author='shivansh',
+author_email='singhshivansh5194@gmail.com',
+packages=find_packages(),
+install_requires=['pandas','numpy','seaborn','matplotlib']
+)
+
+11> now with, you have to create a new folder in the environment, by name src, ( it will use in condition, what if we need to find a source as a package, for this
+now within the src folder, create new file and name it "_it_.py"
+
+_it_.py : w.r.t wht will happen, whenever with setup.py, this find packages will running, it will see how many how folder with underscore underscore py format,
+so it will directly convert this source as a package itself
+
+and now it will try to build it. after build this "_init_.py" file, your can import it, where ever you want it.
+
+My entire projcet work will done in this folder.
+
+
+now we have to do some changes in point no. 10
+what ever packages we need, we would't type in this code, instead
+we can create a function to relate with "requirement.txt" folder and all the required packages we will write in the same folder, one by one.
+
+to get list of all the packages adress and name in the form of list, 
+we also have to import list library from typing module.
+
+now the updated code will be like this:
+from setuptools import find_packages,setup
+from typing import List
+
+HYPEN_E_DOT ='-e .'
+def get_requirements(file_path:str)->List[str]:
+    '''
+    this function will return the list of requirements
+    '''
+    requirements=[]
+    with open(file_path) as file_obj:
+        requirements= file_obj.readline()
+        requirements=[req.replace("\n","") for req in requirements]
+        if HYPEN_E_DOT in requirements:
+            requirements.remove(HYPEN_E_DOT)
+     
+    return requirements
+
+setup(
+
+name= 'mlproject',
+version='0.0.1',
+author='shivansh',
+author_email='singhshivansh5194@gmail.com',
+packages=find_packages(),
+install_requires= get_requirements('requirements.txt')
+
+
+)
+
+
+after that use command in terminal to  install all your packages
+use it : " pip install -r requirements.txt"
+
+now after installation of all the commands, we have to add all our stuffs in the github repository
+to do this use : " git add ."
+to check statu:  "git status"
+
+now for new commit: use it : git commit -m "setup"
+
+to push to the origin main use it: git push -u origin main
+
+
+chapter 2      
+
+now create "component" folder under "src" in which add 4 new files:
+1. __init__.py
+2. data_ingestion.py :  for the purpose of data extraction/ data calling
+3. data_transformation.py : for the purpose of data transformation
+4. model_trainer.py : here we will create our model to train the data
+
+further create a new folder under "src" named "pipeline"
+and add 3 new files:
+1.__init__.py : to connect with all the codes will be write in other files
+2. predict_pipeline.py : here we will add code related to prediction of our model
+3. train_pipeline.py : here we will add code related to train our model.
+
+now add new files in the "src" :
+1. exception.py :  An exception is an event, which occurs during the execution of a program that disrupts the normal flow of the program's instructions. 
+In general, when a Python script encounters a situation that it cannot cope with, it raises an exception. 
+An exception is a Python object that represents an error.
+
+code in it :
+import sys # the sys module in python provides various functions and variables that are used to manipulate different parts of the Python runtime environment.
+            # it allows operating on the in terpreter as it provides acccess to the variables and functions that interact strongly with the interpreter.
+def error_message-detail(error, error_detail:sys): # error: what type of error, # error_details:sys : the type of error we want to implement would already present in the sys.
+      _,_,exc_tb = error-detail.exc_info()  # this .exc_info() gives some types of information
+                                            # 1. on which file the infomation i'll occured.
+                                            # 2. which line no. or exception occured
+                                
+2. logger.py : here logger related will be added
+3. utils.py :  here if I wnt to connect mongodb or any other source for data
+i can simply add codes related here only.
