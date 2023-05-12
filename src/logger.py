@@ -15,6 +15,6 @@ logging.basicConfig(
 
 )
 
-# remove below code,after execution first time, this will be for the clearance, whether code is running or not.
-if __name__=="__main__":
-    logging.info("Logging has started")
+# # remove below code,after execution first time, this will be for the clearance, whether code is running or not.
+# if __name__=="__main__":
+#     logging.info("Logging has started")
